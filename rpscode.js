@@ -105,11 +105,24 @@ function game(){
     }
 }
 
+/*
 const rockButton = document.querySelector("#rock");
 console.log(rockButton);
 
 rockButton.addEventListener('click', function(e){
     console.log(e);
+    console.log(e.target.id)
+})
+*/
+
+//create nodelist of buttons
+const choices = document.querySelectorAll("button.choice");
+console.log(choices);
+
+choices.forEach( (choice) => {
+    choice.addEventListener('click', function(e){
+        console.log(e.target.id);
+    })
 })
 
 let playerScore = 0;
