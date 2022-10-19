@@ -77,8 +77,8 @@ function youWin (playerSelection, computerSelection) {
 
 
 function game(){
-    /*play 5 games*/
-    for (let i = 0; i < 5; i++){
+    /*play 1 game*/
+    for (let i = 0; i < 1; i++){
         let player = getPlayerChoice();
         /* keep prompting the user for a valid choice */
             while (player == "InvalidChoice"){
@@ -105,14 +105,17 @@ function game(){
     }
 }
 
+const rockButton = document.querySelector("#rock");
+console.log(rockButton);
 
+rockButton.addEventListener('click', function(e){
+    console.log(e);
+})
 
 let playerScore = 0;
 let computerScore = 0;
     
-
-
-game();
+//game
 
 
 
