@@ -3,6 +3,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: sans-serif;
+}
+
+.score-section,
+.choice-display,
+.scoreboard {
+    padding: 30px;
 }
 
 
@@ -11,8 +18,18 @@ body {
     justify-content: center;
     align-items: center;
     column-gap: 10px;
+    margin: 20px;
 }
 
+.choices .choice {
+    width: 100px;
+    height: auto;
+    transition: 0.25s;
+}
+
+.choice:hover {
+    width: 120px;
+}
 
 .scoreboard{
     display: flex;

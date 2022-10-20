@@ -1,7 +1,10 @@
-const choiceArray = ["rock", "paper", "scissors"];
+const choiceArray = ["Rock", "Paper", "Scissors"];
 
 
 function game(input){
+    if (playerScore >= targetScore || computerScore >= targetScore){
+        return //don't play if the target score has been reached
+    }
     let player = input;
     let computer = getComputerChoice();
     playRound(player, computer);
@@ -27,8 +30,8 @@ function playRound(playerSelection, computerSelection){
         return;
     }
 
-    if (playerSelection == "rock"){
-        if (computerSelection == "paper"){
+    if (playerSelection == "Rock"){
+        if (computerSelection == "Paper"){
             youLoseRound(playerSelection, computerSelection);
             return;
         } else {
@@ -36,8 +39,8 @@ function playRound(playerSelection, computerSelection){
             return;
         }
     }
-    else if (playerSelection == "paper") {
-        if (computerSelection == "scissors"){
+    else if (playerSelection == "Paper") {
+        if (computerSelection == "Scissors"){
             youLoseRound(playerSelection, computerSelection);
             return;
         } else {
@@ -45,8 +48,8 @@ function playRound(playerSelection, computerSelection){
             return;
         }
     }
-    else if (playerSelection == "scissors") {
-        if (computerSelection == "rock"){
+    else if (playerSelection == "Scissors") {
+        if (computerSelection == "Rock"){
             youLoseRound(playerSelection, computerSelection);
             return;
         } else {
@@ -91,12 +94,21 @@ function determineWinner(){
     }
 }
 
+function resetScores(){
+    playerScore = 0;
+    computerScore =0;
+    playerScoreboard.textContent = `Player Score: ${playerScore}`
+    computerScoreboard.textContent = `Computer Score: ${computerScore}`
 
-const choices = document.querySelectorAll("button.choice"); //nodelist of buttons
+}    
+
+
+const choices = document.querySelectorAll("img.choice"); //nodelist of image buttons
 const display = document.querySelector("#choice-display"); //show choices etc
 const playerScoreboard = document.querySelector("#player-score-display");
 const computerScoreboard = document.querySelector("#computer-score-display");
 const targetScore = 5;
+const resetButton = document.querySelector("#reset");
 
 let playerScore = 0;
 let computerScore = 0; 
@@ -105,10 +117,19 @@ let computerScore = 0;
 choices.forEach( (choice) => {
     choice.addEventListener('click', function(e){
         let chosen = e.target.id;
+        if (playerScore >= targetScore || computerScore >= targetScore){
+            display.textContent = `Would you like to play again?`;
+        }
+        else {
         display.textContent = `You chose ${chosen}`;
+        }
         game(chosen);
     })
 })
+
+resetButton.addEventListener('click', function(){
+    resetScores();
+});
 
 
 
